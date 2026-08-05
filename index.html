@@ -185,8 +185,8 @@
 </head>
 <body class="no-scroll">
 
-  <!-- ملف الصوت المرفوع باسمه الحالي -->
-  <audio id="bg-music" src="ليلة خميس .. محمد عبده .mp3" loop></audio>
+  <!-- ملف الصوت بالاسم الجديد -->
+  <audio id="bg-music" src="music.mp3" preload="auto" loop></audio>
 
   <div class="mobile-wrapper">
     <!-- 1. قسم المغلف -->
@@ -207,7 +207,8 @@
       <img class="scroll-image" src="4.png" alt="صورة 1">
       
       <div class="image-wrapper">
-        <img class="scroll-image" src="ك.يسرا م.أنس.png" alt="صورة 2">
+        <!-- الصورة الأخيرة بالاسم الجديد -->
+        <img class="scroll-image" src="5.png" alt="صورة 2">
         
         <div class="timer-container">
           <div class="timer-box">
@@ -240,9 +241,12 @@
       element.classList.toggle('open');
       document.body.classList.remove('no-scroll');
       
+      // تشغيل الصوت مباشرة مع أول لمسة للمغلف
       const music = document.getElementById('bg-music');
       if (music) {
-        music.play();
+        music.play().catch(function(error) {
+          console.log("إذن تشغيل الصوت يتطلب تفاعل المستخدم:", error);
+        });
       }
     }
 
