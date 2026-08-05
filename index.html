@@ -185,8 +185,8 @@
 </head>
 <body class="no-scroll">
 
-  <!-- ملف الصوت بالاسم الجديد -->
-  <audio id="bg-music" src="music.mp3" preload="auto" loop></audio>
+  <!-- ملف الصوت المحدث -->
+  <audio id="bg-music" src="song.mp3" preload="auto" loop></audio>
 
   <div class="mobile-wrapper">
     <!-- 1. قسم المغلف -->
@@ -207,7 +207,7 @@
       <img class="scroll-image" src="4.png" alt="صورة 1">
       
       <div class="image-wrapper">
-        <!-- الصورة الأخيرة بالاسم الجديد -->
+        <!-- الصورة الأخيرة المحدثة -->
         <img class="scroll-image" src="7.png" alt="صورة 2">
         
         <div class="timer-container">
@@ -241,7 +241,6 @@
       element.classList.toggle('open');
       document.body.classList.remove('no-scroll');
       
-      // تشغيل الصوت مباشرة مع أول لمسة للمغلف
       const music = document.getElementById('bg-music');
       if (music) {
         music.play().catch(function(error) {
