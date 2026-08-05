@@ -27,7 +27,7 @@
       min-height: 100vh;
       margin: 0 auto;
       position: relative;
-      background-image: url('ك.يسرا م.أنس 2/6.png');
+      background-image: url('6.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -185,29 +185,29 @@
 </head>
 <body class="no-scroll">
 
-  <!-- عنصر الصوت المخفي -->
-  <audio id="bg-music" src="ك.يسرا م.أنس 2/ليلة خميس .. محمد عبده.mp3" loop></audio>
+  <!-- ملف الصوت المرفوع باسمه الحالي -->
+  <audio id="bg-music" src="ليلة خميس .. محمد عبده .mp3" loop></audio>
 
   <div class="mobile-wrapper">
     <!-- 1. قسم المغلف -->
     <section class="card-section">
       <div class="envelope-container" onclick="openEnvelope(this)">
-        <img class="intro-image" src="ك.يسرا م.أنس 2/3.png" alt="صورة الإنترو">
+        <img class="intro-image" src="3.png" alt="صورة الإنترو">
         <div class="door-left">
-          <img src="ك.يسرا م.أنس 2/1.png" alt="غلاف يسار">
+          <img src="1.png" alt="غلاف يسار">
         </div>
         <div class="door-right">
-          <img src="ك.يسرا م.أنس 2/2.png" alt="غلاف يمين">
+          <img src="2.png" alt="غلاف يمين">
         </div>
       </div>
     </section>
 
     <!-- 2. قسم صور السكرول -->
     <section class="scroll-section">
-      <img class="scroll-image" src="ك.يسرا م.أنس 2/4.png" alt="صورة 1">
+      <img class="scroll-image" src="4.png" alt="صورة 1">
       
       <div class="image-wrapper">
-        <img class="scroll-image" src="ك.يسرا م.أنس 2/ك.يسرا م.أنس.png" alt="صورة 2">
+        <img class="scroll-image" src="ك.يسرا م.أنس .png" alt="صورة 2">
         
         <div class="timer-container">
           <div class="timer-box">
@@ -240,7 +240,6 @@
       element.classList.toggle('open');
       document.body.classList.remove('no-scroll');
       
-      // تشغيل الموسيقى تلقائياً فور فتح المغلف
       const music = document.getElementById('bg-music');
       if (music) {
         music.play();
