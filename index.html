@@ -34,7 +34,7 @@
     }
 
     .card-section {
-      height: 100vh;
+      min-height: 100vh;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -108,6 +108,27 @@
       transform: rotateY(110deg);
     }
 
+    .scroll-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .scroll-image {
+      width: 100%;
+      min-height: 100vh;
+      object-fit: cover;
+      display: block;
+    }
+
     .timer-container {
       position: absolute;
       top: 22%;
@@ -160,32 +181,11 @@
     .location-btn:hover {
       opacity: 0.8;
     }
-
-    .scroll-section {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
-
-    .image-wrapper {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-    }
-
-    .scroll-image {
-      width: 100%;
-      height: 100vh;
-      object-fit: cover;
-      display: block;
-    }
   </style>
 </head>
 <body class="no-scroll">
 
-  <!-- ملف الصوت المحدث -->
+  <!-- ملف الصوت -->
   <audio id="bg-music" src="song.mp3" preload="auto" loop></audio>
 
   <div class="mobile-wrapper">
@@ -207,7 +207,6 @@
       <img class="scroll-image" src="4.png" alt="صورة 1">
       
       <div class="image-wrapper">
-        <!-- الصورة الأخيرة المحدثة -->
         <img class="scroll-image" src="7.png" alt="صورة 2">
         
         <div class="timer-container">
@@ -238,14 +237,36 @@
 
   <script>
     function openEnvelope(element) {
+      const isOpening = !element.classList.contains('open');
       element.classList.toggle('open');
-      document.body.classList.remove('no-scroll');
       
       const music = document.getElementById('bg-music');
-      if (music) {
-        music.play().catch(function(error) {
-          console.log("إذن تشغيل الصوت يتطلب تفاعل المستخدم:", error);
-        });
+      
+      if (isOpening) {
+        document.body.classList.remove('no-scroll');
+        
+        if (music) {
+          music.currentTime = 0;
+          const playPromise = music.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(function(error) {
+              console.log("خطأ في تشغيل الصوت:", error);
+            });
+          }
+        }
+
+        // التمرير التلقائي للصورة التالية بعد فتح المغلف
+        setTimeout(() => {
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth'
+          });
+        }, 800);
+      } else {
+        document.body.classList.add('no-scroll');
+        if (music) {
+          music.pause();
+        }
       }
     }
 
